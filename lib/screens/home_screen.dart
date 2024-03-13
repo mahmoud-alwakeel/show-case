@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback(
+      WidgetsBinding.instance.addPostFrameCallback(
       (_) => ShowCaseWidget.of(context).startShowCase(
         [
           key1,
@@ -72,6 +72,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 textColor: Colors.white,
                 targetPadding: const EdgeInsets.all(8),
                 tooltipPadding: const EdgeInsets.all(20),
+                onTargetClick: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) {
+                    return const SettingsScreen();
+                  })).then((_) => ShowCaseWidget.of(context).startShowCase([
+                        key2,
+                        key3,
+                      ]));
+                },
+                disposeOnTap: true,
                 child: const Icon(
                   Icons.settings,
                   color: Colors.white,
@@ -110,9 +119,10 @@ class _HomeScreenState extends State<HomeScreen> {
         targetShapeBorder: const CircleBorder(),
         targetPadding: const EdgeInsets.all(8),
         container: Icon(
-          Icons.local_drink, 
+          Icons.local_drink,
           size: 50,
-          color: Colors.indigo[400],),
+          color: Colors.indigo[400],
+        ),
         child: FloatingActionButton(
           onPressed: () {},
           backgroundColor: Colors.indigo,

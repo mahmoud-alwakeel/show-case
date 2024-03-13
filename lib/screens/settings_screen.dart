@@ -16,12 +16,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      return ShowCaseWidget.of(myContext!).startShowCase(
+    Future.delayed(const Duration(milliseconds: 200), (){
+      WidgetsBinding.instance.addPostFrameCallback(
+      (_) => ShowCaseWidget.of(myContext!).startShowCase(
         [
           key4,
         ],
-      );
+      ),
+    );
     });
   }
 
